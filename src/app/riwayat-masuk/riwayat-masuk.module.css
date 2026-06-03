@@ -1,0 +1,231 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.headerBanner {
+  background-color: #FFB22C;
+  color: #000000;
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.08);
+  color: #000000;
+  transition: all var(--transition-fast);
+}
+
+.backBtn:hover {
+  background-color: rgba(0, 0, 0, 0.16);
+  transform: translateX(-2px);
+}
+
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.summaryContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .summaryContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.summaryCard {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.summaryLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.summaryValue {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+}
+
+.filterBar {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.locationTabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  overflow-x: auto;
+}
+
+.tabBtn {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.tabBtn:hover {
+  background-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.tabBtnActive {
+  background-color: #FFB22C;
+  color: #000000;
+  border-color: #FFB22C;
+}
+
+.searchAndDates {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+@media (max-width: 800px) {
+  .searchContainer {
+    max-width: 100%;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-light);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-secondary);
+  font-size: 13px;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.searchInput:focus {
+  border-color: #FFB22C;
+  background-color: var(--bg-primary);
+}
+
+.dateFilter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+}
+
+.dateInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.loadingState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.tableRow {
+  transition: background-color var(--transition-fast);
+}
+
+.tableRow:hover {
+  background-color: rgba(255, 178, 44, 0.03) !important;
+}
+
+.subText {
+  font-size: 11px;
+  font-family: monospace;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.clickableCell {
+  cursor: pointer;
+  position: relative;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.clickableCell:hover {
+  color: #854836;
+  background-color: rgba(133, 72, 54, 0.05);
+}
+
+.clickableCell::after {
+  content: ' 🖱️';
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.clickableCell:hover::after {
+  opacity: 0.7;
+}

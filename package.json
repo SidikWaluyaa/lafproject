@@ -1,5 +1,5 @@
 {
-  "name": "laf-temp",
+  "name": "laf-project",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,9 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.107.0",
+    "date-fns": "^4.4.0",
+    "echarts": "^6.1.0",
+    "echarts-for-react": "^3.0.6",
+    "lucide-react": "^1.17.0",
     "next": "16.2.7",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "babel-plugin-react-compiler": "1.0.0"

@@ -1,0 +1,311 @@
+.loginContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #0c0706; /* Dark background base */
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(255, 178, 44, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(133, 72, 54, 0.12) 0%, transparent 50%);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Ambient glow blobs */
+.glow1 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 178, 44, 0.15) 0%, transparent 70%);
+  top: 15%;
+  left: 20%;
+  filter: blur(40px);
+  pointer-events: none;
+  animation: floatGlow 12s infinite alternate ease-in-out;
+}
+
+.glow2 {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(133, 72, 54, 0.2) 0%, transparent 70%);
+  bottom: 10%;
+  right: 15%;
+  filter: blur(50px);
+  pointer-events: none;
+  animation: floatGlow 16s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes floatGlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(40px, -30px) scale(1.1);
+  }
+}
+
+.loginCard {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  backdrop-filter: blur(24px) saturate(130%);
+  border-radius: 24px;
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  padding: 48px 40px;
+  animation: cardFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brandHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.logoImage {
+  height: 54px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform var(--transition-fast);
+  margin-bottom: 4px;
+}
+
+.loginCard:hover .logoImage {
+  transform: scale(1.03);
+}
+
+.brandSubtitle {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.formSubtitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.errorBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: rgba(255, 59, 48, 0.15);
+  border: 1px solid rgba(255, 59, 48, 0.25);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  color: #FF6F66;
+  font-size: 13px;
+  line-height: 1.4;
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.errorIcon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+.input {
+  width: 100%;
+  padding: 13px 44px 13px 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.02);
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.input:focus {
+  border-color: var(--accent-laf);
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 3px rgba(255, 178, 44, 0.15);
+}
+
+.input:focus + .inputIcon {
+  color: var(--accent-laf);
+}
+
+.eyeButton {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+}
+
+.eyeButton:hover {
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.submitBtn {
+  margin-top: 10px;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  background-color: var(--accent-laf);
+  color: #000000;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 20px rgba(255, 178, 44, 0.25);
+}
+
+.submitBtn:hover:not(:disabled) {
+  background-color: #E29E20;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(255, 178, 44, 0.35);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btnArrow {
+  transition: transform var(--transition-fast);
+}
+
+.submitBtn:hover .btnArrow {
+  transform: translateX(3px);
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top: 2px solid #000000;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loginFooter {
+  margin-top: 40px;
+  text-align: center;
+  z-index: 10;
+}
+
+.loginFooter p {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 4px;
+}
+
+.footerNote {
+  font-size: 11px !important;
+  color: rgba(255, 255, 255, 0.2) !important;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 480px) {
+  .loginCard {
+    padding: 36px 24px;
+    border-radius: 20px;
+  }
+}

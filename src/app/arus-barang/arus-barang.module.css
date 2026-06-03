@@ -1,0 +1,219 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filterBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-primary);
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-subtle);
+}
+
+.filterLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.filterTitle {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.filterSubtitle {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.dateInputs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dateGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.dateInput {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  outline: none;
+  font-size: 13px;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  transition: all var(--transition-fast);
+}
+
+.dateInput:focus {
+  border-color: var(--accent-laf);
+  background-color: var(--bg-primary);
+}
+
+.flowGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .flowGrid {
+    grid-template-columns: 1fr;
+  }
+  .filterBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .dateInputs {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.flowPanel {
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-subtle);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.flowPanel:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+.flowHeader {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.flowPanelTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.flowPanelSubtitle {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.headerCyan {
+  background: linear-gradient(135deg, rgba(0, 168, 150, 0.03) 0%, rgba(0, 168, 150, 0.08) 100%);
+}
+
+.headerCyan::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #00A896;
+}
+
+.headerCyan .flowPanelTitle {
+  color: #028090;
+}
+
+.headerRed {
+  background: linear-gradient(135deg, rgba(255, 59, 48, 0.03) 0%, rgba(255, 59, 48, 0.08) 100%);
+}
+
+.headerRed::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--danger);
+}
+
+.headerRed .flowPanelTitle {
+  color: #C1121F;
+}
+
+.emptyState {
+  color: var(--text-light);
+  font-size: 14px;
+  padding: 32px;
+  text-align: center;
+}
+
+.loadingWrapper,
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  box-shadow: var(--shadow-subtle);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--accent-laf);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.errorTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--danger);
+  margin-bottom: 12px;
+}
+
+.errorText {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 24px;
+  max-width: 450px;
+  line-height: 1.5;
+}

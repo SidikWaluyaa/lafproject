@@ -1,0 +1,29 @@
+:root {
+  /* Color Palette */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F7F7F7;      /* Dari #F7F7F7 */
+  --accent-laf: #FFB22C;       /* Kuning/Oranye khas LAF */
+  --accent-brown: #854836;     /* Coklat kulit dari #854836 */
+  --text-primary: #000000;     /* Hitam pekat dari #000000 */
+  --text-secondary: #4A4A4A;
+  --text-light: #8E8E93;
+  --border-color: #E5E5EA;
+  --success: #34C759;
+  --danger: #FF3B30;
+  --warning: #FF9500;
+  
+  /* Fonts */
+  --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Shadows & Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.02);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.05);
+  --shadow-large: 0 12px 40px rgba(0, 0, 0, 0.08);
+  
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}

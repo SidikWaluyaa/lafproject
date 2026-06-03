@@ -1,0 +1,228 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.topActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--bg-primary);
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-subtle);
+}
+
+.searchFilters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-grow: 1;
+  max-width: 600px;
+}
+
+.searchInput {
+  flex-grow: 2;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  font-size: 14px;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.searchInput:focus {
+  border-color: var(--accent-laf);
+  background-color: var(--bg-primary);
+  box-shadow: 0 0 0 3px rgba(255, 178, 44, 0.1);
+}
+
+.filterSelect {
+  flex-grow: 1;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.filterSelect:focus {
+  border-color: var(--accent-laf);
+  color: var(--text-primary);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 500px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroupFull {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 500px) {
+  .formGroupFull {
+    grid-column: span 1;
+  }
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.loadingState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.actionsCell {
+  display: flex;
+  gap: 8px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  color: var(--text-light);
+}
+
+.editBtn:hover {
+  background-color: rgba(255, 178, 44, 0.1);
+  color: #D48000;
+}
+
+.deleteBtn:hover {
+  background-color: rgba(255, 59, 48, 0.1);
+  color: var(--danger);
+}
+
+.skuText {
+  font-weight: 600;
+  font-family: monospace;
+  color: var(--text-primary);
+}
+
+.stockBreakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+}
+
+.stockBreakdownItem {
+  color: var(--text-secondary);
+}
+
+/* KPI Grid Summary */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.kpiCard {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all var(--transition-fast);
+}
+
+.kpiCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.kpiCardActive {
+  border-color: var(--danger) !important;
+  background-color: rgba(239, 68, 68, 0.02) !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+}
+
+.kpiCardAlert {
+  border-left: 4px solid var(--danger);
+}
+
+.kpiLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.kpiValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Low Stock Table Row and Cell Badge */
+.lowStockRow {
+  background-color: rgba(239, 68, 68, 0.02) !important;
+  border-left: 3px solid var(--danger);
+  transition: background-color var(--transition-fast);
+}
+
+.lowStockRow:hover {
+  background-color: rgba(239, 68, 68, 0.06) !important;
+}
+
+.lowStockBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--danger);
+  font-weight: 700;
+}

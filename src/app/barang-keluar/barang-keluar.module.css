@@ -1,0 +1,231 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.topActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--bg-primary);
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-subtle);
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-grow: 1;
+  max-width: 650px;
+}
+
+.searchInput {
+  flex-grow: 2;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  font-size: 14px;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.searchInput:focus {
+  border-color: var(--accent-laf);
+  background-color: var(--bg-primary);
+}
+
+.dateInputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dateInput {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  outline: none;
+  font-size: 13px;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  transition: all var(--transition-fast);
+}
+
+.dateInput:focus {
+  border-color: var(--accent-laf);
+  background-color: var(--bg-primary);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 500px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroupFull {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 500px) {
+  .formGroupFull {
+    grid-column: span 1;
+  }
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+  margin-top: 24px;
+}
+
+.loadingState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.stockAlert {
+  background-color: rgba(255, 59, 48, 0.08);
+  border: 1px solid rgba(255, 59, 48, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--danger);
+  grid-column: span 2;
+}
+
+@media (max-width: 500px) {
+  .stockAlert {
+    grid-column: span 1;
+  }
+}
+
+.infoBadge {
+  font-size: 11px;
+  font-weight: 500;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+/* Combobox Search Styles */
+.comboboxContainer {
+  position: relative;
+  width: 100%;
+}
+
+.suggestionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-medium);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 1100;
+  margin-top: 4px;
+  padding: 4px 0;
+}
+
+.suggestionItem {
+  padding: 10px 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.suggestionItem:hover,
+.suggestionItemActive {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.suggestionLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
+}
+
+.suggestionName {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.suggestionSku {
+  font-size: 11px;
+  font-family: monospace;
+  color: var(--text-light);
+}
+
+.suggestionStock {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.selectionResetBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.selectionResetBtn:hover {
+  color: var(--danger);
+}
