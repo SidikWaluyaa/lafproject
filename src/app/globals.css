@@ -260,6 +260,8 @@ a {
   flex-direction: column;
   background: transparent;
   transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 0;
+  width: 100%;
 }
 
 .page-content {
@@ -267,6 +269,7 @@ a {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 /* Sidebar overlay (mobile drawer backdrop) */
@@ -283,10 +286,12 @@ a {
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;
+    max-width: 100%;
   }
 
   .page-content {
     padding: 16px;
+    max-width: 100%;
   }
 }
 

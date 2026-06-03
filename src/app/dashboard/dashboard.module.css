@@ -405,6 +405,13 @@
 @media (max-width: 600px) {
   .tabContainer {
     width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tabContainer::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -426,10 +433,11 @@
 
 @media (max-width: 600px) {
   .tabButton {
-    flex: 1;
+    flex: 0 0 auto;
     justify-content: center;
-    padding: 8px 8px;
-    font-size: 11px;
+    padding: 8px 14px;
+    font-size: 12px;
+    white-space: nowrap;
   }
 }
 

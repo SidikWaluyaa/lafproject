@@ -39,6 +39,9 @@ self.addEventListener('fetch', (event) => {
   // Skip non-GET requests (mutations must always go to network)
   if (request.method !== 'GET') return;
 
+  // Skip non-http/https requests (like chrome-extension://, file://, etc.)
+  if (!url.protocol.startsWith('http')) return;
+
   // Skip Supabase API calls - always network
   if (url.hostname.includes('supabase')) return;
 
@@ -47,10 +50,12 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseClone);
-          });
+          if (response && response.status === 200) {
+            const responseClone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(request, responseClone);
+            });
+          }
           return response;
         })
         .catch(() => caches.match(request))
@@ -71,7 +76,10 @@ self.addEventListener('fetch', (event) => {
           }
           return networkResponse;
         })
-        .catch(() => cachedResponse);
+        .catch((err) => {
+          if (cachedResponse) return cachedResponse;
+          throw err;
+        });
 
       return cachedResponse || fetchPromise;
     })
