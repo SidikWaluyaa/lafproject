@@ -64,3 +64,19 @@
   overflow-y: auto;
   flex-grow: 1;
 }
+
+@media (max-width: 600px) {
+  .modal {
+    width: calc(100% - 32px);
+    max-height: 85vh;
+    border-radius: var(--radius-md);
+  }
+  
+  .header {
+    padding: 16px 20px;
+  }
+  
+  .body {
+    padding: 20px;
+  }
+}

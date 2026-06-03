@@ -751,13 +751,13 @@ CREATE TABLE locations (
               <p className={styles.chartSubtitle}>Analisis porsi stok (fisik) dan nilai modal (Rupiah) berdasarkan kategori barang.</p>
               
               <div className={styles.splitChartsContainer}>
-                <div style={{ flex: 1, minWidth: '250px' }}>
+                <div className={styles.splitChartLeft}>
                   <h3 className={styles.subChartTitle}>Volume Stok (Pasang)</h3>
                   <div className={styles.chartContainer} style={{ height: '240px' }}>
                     <ReactECharts option={categoryStockOption} style={{ height: '100%', width: '100%' }} opts={{ renderer: 'canvas' }} />
                   </div>
                 </div>
-                <div style={{ flex: 1, minWidth: '250px', borderLeft: '1px dashed var(--border-color)', paddingLeft: '20px' }}>
+                <div className={styles.splitChartRight}>
                   <h3 className={styles.subChartTitle}>Nilai Aset (Rupiah)</h3>
                   <div className={styles.chartContainer} style={{ height: '240px' }}>
                     <ReactECharts option={categoryAssetOption} style={{ height: '100%', width: '100%' }} opts={{ renderer: 'canvas' }} />

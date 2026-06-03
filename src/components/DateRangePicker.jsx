@@ -127,7 +127,12 @@ export default function DateRangePicker({ startDate, endDate, onChange }) {
     if (activeShortcut === 'custom') {
       return `${formatIndoDate(startDate)} - ${formatIndoDate(endDate)}`;
     }
-    return active ? `${active.label} (${formatIndoDate(startDate)} - ${formatIndoDate(endDate)})` : `${formatIndoDate(startDate)} - ${formatIndoDate(endDate)}`;
+    return active ? (
+      <>
+        <span>{active.label}</span>
+        <span className={styles.rangeDetails}> ({formatIndoDate(startDate)} - {formatIndoDate(endDate)})</span>
+      </>
+    ) : `${formatIndoDate(startDate)} - ${formatIndoDate(endDate)}`;
   };
 
   return (

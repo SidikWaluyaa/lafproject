@@ -301,6 +301,7 @@ a {
 
   .custom-table {
     font-size: 12px;
+    min-width: 650px;
   }
 
   .custom-table th,
