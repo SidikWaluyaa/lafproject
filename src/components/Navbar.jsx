@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { User, Calendar } from 'lucide-react';
+import { User, Calendar, Menu } from 'lucide-react';
 import { useAuth } from '@/lib/AuthContext';
 import styles from './navbar.module.css';
 
-export default function Navbar() {
+export default function Navbar({ onMenuToggle }) {
   const pathname = usePathname();
   const { user } = useAuth();
   const [mounted, setMounted] = useState(false);
@@ -26,13 +26,14 @@ export default function Navbar() {
     return user.email;
   };
   
-  // Format page title from pathname
   const getPageTitle = () => {
     if (pathname === '/' || pathname.startsWith('/dashboard')) return 'Dashboard Analytics';
     if (pathname.startsWith('/arus-barang')) return 'Analisis Arus Barang';
     if (pathname.startsWith('/products')) return 'Stock Master';
     if (pathname.startsWith('/barang-masuk')) return 'Barang Masuk';
     if (pathname.startsWith('/barang-keluar')) return 'Barang Keluar';
+    if (pathname.startsWith('/riwayat-masuk')) return 'Riwayat Masuk';
+    if (pathname.startsWith('/riwayat-keluar')) return 'Riwayat Keluar';
     if (pathname.startsWith('/categories')) return 'Kategori Master';
     if (pathname.startsWith('/locations')) return 'Lokasi Master';
     return 'Stock Management';
@@ -52,8 +53,14 @@ export default function Navbar() {
   return (
     <header className={styles.navbar}>
       <div className={styles.left}>
-        <span className={styles.breadcrumbs}>{getBreadcrumbs()}</span>
-        <h1 className={styles.title}>{getPageTitle()}</h1>
+        {/* Hamburger button - visible on mobile only */}
+        <button className={styles.menuBtn} onClick={onMenuToggle} aria-label="Toggle menu">
+          <Menu size={22} />
+        </button>
+        <div className={styles.titleGroup}>
+          <span className={styles.breadcrumbs}>{getBreadcrumbs()}</span>
+          <h1 className={styles.title}>{getPageTitle()}</h1>
+        </div>
       </div>
       <div className={styles.right}>
         <div className={styles.dateBadge}>

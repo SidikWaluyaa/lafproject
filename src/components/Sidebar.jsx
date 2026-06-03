@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Boxes, ArrowDownLeft, ArrowUpRight, History, Tags, MapPin, LogOut, ArrowLeftRight } from 'lucide-react';
+import { LayoutDashboard, Boxes, ArrowDownLeft, ArrowUpRight, History, Tags, MapPin, LogOut, ArrowLeftRight, X } from 'lucide-react';
 import { useAuth } from '@/lib/AuthContext';
 import styles from './sidebar.module.css';
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
   const pathname = usePathname();
   const router = useRouter();
   const { logout } = useAuth();
@@ -33,10 +33,14 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ''}`}>
       <div className={styles.logoContainer}>
         <img src="/logo.png" alt="LAF Logo" className={styles.logoImage} />
         <span className={styles.logoText}>LAF PROJECT</span>
+        {/* Close button visible on mobile only */}
+        <button className={styles.closeBtn} onClick={onClose} aria-label="Close menu">
+          <X size={20} />
+        </button>
       </div>
       <nav className={styles.nav}>
         {menuItems.map((item) => {
@@ -47,6 +51,7 @@ export default function Sidebar() {
               key={item.path} 
               href={item.path}
               className={`${styles.navItem} ${isActive ? styles.active : ''}`}
+              onClick={onClose}
             >
               <Icon size={18} className={styles.icon} />
               <span>{item.name}</span>

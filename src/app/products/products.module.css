@@ -24,6 +24,24 @@
   max-width: 600px;
 }
 
+@media (max-width: 768px) {
+  .topActions {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 16px;
+  }
+
+  .searchFilters {
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .searchInput,
+  .filterSelect {
+    width: 100%;
+  }
+}
+
 .searchInput {
   flex-grow: 2;
   padding: 10px 14px;

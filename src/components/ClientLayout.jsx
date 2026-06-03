@@ -2,7 +2,7 @@
 
 import { useAuth } from '@/lib/AuthContext';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 
@@ -10,16 +10,41 @@ export default function ClientLayout({ children }) {
   const { user, loading } = useAuth();
   const pathname = usePathname();
   const router = useRouter();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const isLoginPage = pathname === '/login';
+
+  // Close sidebar on route change (mobile)
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [pathname]);
+
+  // Close sidebar on window resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setSidebarOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Lock body scroll when sidebar drawer is open
+  useEffect(() => {
+    if (sidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [sidebarOpen]);
 
   useEffect(() => {
     if (!loading) {
       if (!user && !isLoginPage) {
-        // Redirect unauthenticated user to login
         router.push('/login');
       } else if (user && isLoginPage) {
-        // Redirect authenticated user to dashboard if they try to access login
         router.push('/dashboard');
       }
     }
@@ -53,7 +78,6 @@ export default function ClientLayout({ children }) {
           maxWidth: '320px',
           width: '90%',
         }}>
-          {/* Logo badge */}
           <img src="/logo.png" alt="LAF Logo" style={{
             height: '46px',
             width: 'auto',
@@ -61,8 +85,6 @@ export default function ClientLayout({ children }) {
             marginBottom: '10px',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
           }} />
-          
-          {/* Loading Spinner */}
           <div className="spinner" style={{
             width: '40px',
             height: '40px',
@@ -71,22 +93,11 @@ export default function ClientLayout({ children }) {
             borderRadius: '50%',
             animation: 'spin 1s linear infinite',
           }} />
-          
-          <div style={{
-            textAlign: 'center',
-          }}>
-            <h3 style={{
-              fontSize: '16px',
-              fontWeight: '600',
-              color: '#FFFFFF',
-              marginBottom: '4px',
-            }}>
+          <div style={{ textAlign: 'center' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#FFFFFF', marginBottom: '4px' }}>
               Memuat Sesi
             </h3>
-            <p style={{
-              fontSize: '12px',
-              color: 'rgba(255, 255, 255, 0.5)',
-            }}>
+            <p style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.5)' }}>
               Menghubungkan ke Supabase...
             </p>
           </div>
@@ -95,18 +106,12 @@ export default function ClientLayout({ children }) {
     );
   }
 
-  // Prevent flashing protected content before redirect
   if (!user && !isLoginPage) {
     return (
-      <div style={{
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: 'var(--bg-secondary)',
-      }} />
+      <div style={{ width: '100vw', height: '100vh', backgroundColor: 'var(--bg-secondary)' }} />
     );
   }
 
-  // Render Login page clean layout without Navbar/Sidebar
   if (isLoginPage) {
     return (
       <div style={{ 
@@ -114,7 +119,7 @@ export default function ClientLayout({ children }) {
         minHeight: '100vh', 
         display: 'flex', 
         flexDirection: 'column', 
-        backgroundColor: '#0c0706' // Darker premium background for login
+        backgroundColor: '#0c0706'
       }}>
         <main style={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
           {children}
@@ -123,27 +128,23 @@ export default function ClientLayout({ children }) {
     );
   }
 
-  // Regular authenticated page layout
   return (
-    <div style={{ 
-      display: 'flex', 
-      width: '100vw', 
-      minHeight: '100vh',
-      backgroundColor: '#FAFAFA',
-      backgroundImage: 'radial-gradient(#E3E3E3 1.5px, transparent 1.5px)',
-      backgroundSize: '20px 20px',
-    }}>
-      <Sidebar />
-      <div style={{ 
-        flexGrow: 1, 
-        marginLeft: '260px', 
-        minHeight: '100vh', 
-        display: 'flex', 
-        flexDirection: 'column', 
-        background: 'transparent' 
-      }}>
-        <Navbar />
-        <main style={{ padding: '40px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+    <div className="app-shell">
+      {/* Overlay backdrop (mobile only) */}
+      {sidebarOpen && (
+        <div 
+          className="sidebar-overlay"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar with mobile drawer support */}
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+      {/* Main content area */}
+      <div className="main-content">
+        <Navbar onMenuToggle={() => setSidebarOpen(prev => !prev)} />
+        <main className="page-content">
           {children}
         </main>
       </div>
