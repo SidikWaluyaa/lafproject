@@ -407,7 +407,6 @@
     width: 100%;
     overflow-x: auto;
     flex-wrap: nowrap;
-    scrollbar-width: none;
   }
   .tabContainer::-webkit-scrollbar {
     display: none;
